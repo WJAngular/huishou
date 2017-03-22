@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="${APPLICATION_NAME}" />
+	
+	<!-- 通过注册中心发现监控中心服务 -->
+	<!--<dubbo:monitor protocol="registry" /> -->
+	
+	<!-- 配置注册中心地址 -->
+	<!--<dubbo:registry protocol="zookeeper" address="${ZOOKEEPER_ADDRESS}" /> -->
+	<!-- dubbo接口去除注册中心，采用直连的方式  -->
+    <dubbo:registry address="N/A" /> 
+	<dubbo:consumer timeout="10000" retries="0"/>
+		 
+	<dubbo:reference id="sysAdminService"
+		interface="com.isongshu.huishou.skeleton.service.SysAdminService"
+		url="${DIS_CONNECT}"/>
+		 
+	<dubbo:reference id="dbBaseService"
+		interface="com.isongshu.huishou.skeleton.service.DbBaseService"
+		url="${DIS_CONNECT}"/>	
+		
+	<dubbo:reference id="prdPackageService"
+		interface="com.isongshu.huishou.skeleton.service.PrdPackageService" 
+		url="${DIS_CONNECT}"/>	
+	
+	<dubbo:reference id="prdProductService"
+		interface="com.isongshu.huishou.skeleton.service.PrdProductService" 
+		url="${DIS_CONNECT}"/>	
+	
+	<dubbo:reference id="prdClazzBrandService"
+		interface="com.isongshu.huishou.skeleton.service.PrdClazzBrandService" 
+		url="${DIS_CONNECT}"/>	
+		
+	<dubbo:reference id="prdPackageItemService"
+		interface="com.isongshu.huishou.skeleton.service.PrdPackageItemService" 
+		url="${DIS_CONNECT}"/>	
+	
+	<dubbo:reference id="orderInfoService"
+		interface="com.isongshu.huishou.skeleton.service.OrderInfoService" 
+		url="${DIS_CONNECT}"/>	
+	
+	<dubbo:reference id="sysParamService"
+		interface="com.isongshu.huishou.skeleton.service.SysParamService" 
+		url="${DIS_CONNECT}"/>	
+		
+	<dubbo:reference id="smsService"
+		interface="com.isongshu.huishou.skeleton.service.SmsService" 
+		url="${DIS_CONNECT}"/>		
+	
+		<dubbo:reference id="userService"
+		interface="com.isongshu.huishou.skeleton.service.UserService" 
+		url="${DIS_CONNECT}"/>		
+	
+		<dubbo:reference id="otherBigRecycleService"
+		interface="com.isongshu.huishou.skeleton.service.OtherBigRecycleService" 
+		url="${DIS_CONNECT}"/>		
+	
+	<dubbo:reference id="otherNewProductService"
+		interface="com.isongshu.huishou.skeleton.service.OtherNewProductService" 
+		url="${DIS_CONNECT}"/>	
+	
+	<dubbo:reference id="otherJoinService"
+		interface="com.isongshu.huishou.skeleton.service.OtherJoinService" 
+		url="${DIS_CONNECT}"/>	
+	
+	
+	
+		
+			
+		
+</beans>

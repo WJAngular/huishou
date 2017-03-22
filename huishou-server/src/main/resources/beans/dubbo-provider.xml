@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="${APPLICATION_NAME}" />
+
+	<!-- 通过注册中心发现监控中心服务 -->
+	<!--<dubbo:monitor protocol="registry" /> -->
+	
+	<!-- 配置注册中心地址 -->
+<!-- 	<dubbo:registry protocol="zookeeper" address="${ZOOKEEPER_ADDRESS}" /> -->
+	 
+	 <!-- dubbo接口去除注册中心，采用直连的方式  -->
+    <dubbo:registry address="N/A" /> 
+		<!-- 超时时间配置20s -->
+	<dubbo:provider timeout="15000" />
+	<dubbo:protocol threads="200" />
+	
+	
+	<!-- 配置服务发布方式（Dubbo 支持多种协议发布，Hessian只是其中的一种） -->
+<!-- 	<dubbo:protocol name="dubbo" port="${APPLICATION_PORT}"  contextpath="${APPLICATION_NAME}/dubbo" /> -->
+	<dubbo:protocol name="dubbo" port="${APPLICATION_PORT}"  />
+	
+	<!-- 声明需要暴露的服务接口 -->
+	
+	<dubbo:service interface="com.isongshu.huishou.skeleton.service.DbBaseService"
+		ref="dbBaseService" />
+		
+	<dubbo:service interface="com.isongshu.huishou.skeleton.service.SysAdminService"
+		ref="sysAdminService" />
+		
+	<dubbo:service interface="com.isongshu.huishou.skeleton.service.PrdPackageService"
+		ref="prdPackageService" />
+		
+	<dubbo:service interface="com.isongshu.huishou.skeleton.service.PrdProductService"
+		ref="prdProductService" />
+		
+	<dubbo:service interface="com.isongshu.huishou.skeleton.service.PrdClazzBrandService"
+		ref="prdClazzBrandService" />
+		
+	<dubbo:service interface="com.isongshu.huishou.skeleton.service.PrdPackageItemService"
+		ref="prdPackageItemService" />
+		
+	<dubbo:service interface="com.isongshu.huishou.skeleton.service.OrderInfoService"
+		ref="orderInfoService" />
+	
+	<dubbo:service interface="com.isongshu.huishou.skeleton.service.SysParamService"
+		ref="sysParamService" />
+		
+		<dubbo:service interface="com.isongshu.huishou.skeleton.service.SmsService"
+		ref="smsService" />
+	
+		<dubbo:service interface="com.isongshu.huishou.skeleton.service.UserService"
+		ref="userService" />
+		
+		<dubbo:service interface="com.isongshu.huishou.skeleton.service.OtherBigRecycleService"
+		ref="otherBigRecycleService" />
+		
+		<dubbo:service interface="com.isongshu.huishou.skeleton.service.OtherNewProductService"
+		ref="otherNewProductService" />
+		
+		<dubbo:service interface="com.isongshu.huishou.skeleton.service.OtherJoinService"
+		ref="otherJoinService" />
+		
+				
+
+</beans>

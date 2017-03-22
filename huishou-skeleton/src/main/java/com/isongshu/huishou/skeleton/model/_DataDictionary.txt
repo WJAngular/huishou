@@ -1,0 +1,204 @@
+Table: code
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | INT(10)      | NO   | PRI |         |         
+ mobile     | VARCHAR(100) | NO   |     |         | 手机号     
+ code       | VARCHAR(20)  | NO   |     |         | 验证码     
+ codeType   | VARCHAR(100) | YES  |     |         | 类型 [REGISTER:注册] [VALID:验证]
+ createTime | DATETIME(19) | YES  |     |         | 创建时间    
+------------+--------------+------+-----+---------+---------
+
+Table: news_info
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | INT(10)       | NO   | PRI |         |         
+ title      | VARCHAR(100)  | YES  |     |         | 新闻标题    
+ newsUrl    | VARCHAR(100)  | YES  |     |         | 新闻链接    
+ iconUrl    | VARCHAR(100)  | YES  |     |         | 图片链接    
+ summary    | VARCHAR(500)  | YES  |     |         | 新闻摘要    
+ createTime | DATETIME(19)  | YES  |     |         | 创建时间    
+ content    | VARCHAR(1000) | YES  |     |         | 新闻内容    
+ status     | INT(10)       | YES  |     |         | 状态      
+ remark     | VARCHAR(500)  | YES  |     |         | 备注      
+------------+---------------+------+-----+---------+---------
+
+Table: order_info
+-------------------------+---------------+------+-----+---------+---------
+ Field                   | Type          | Null | Key | Default | Remarks 
+-------------------------+---------------+------+-----+---------+---------
+ id                      | INT(10)       | NO   | PRI |         |         
+ orderId                 | VARCHAR(20)   | NO   |     |         | 订单号     
+ userName                | VARCHAR(100)  | NO   |     |         | 会员号 默认是手机号码
+ contactName             | VARCHAR(300)  | NO   |     |         | 联系名字    
+ contactTel              | VARCHAR(11)   | NO   |     |         | 联系电话    
+ payType                 | VARCHAR(300)  | NO   |     |         | 收款方式[cash:现金][bank:网银转账][alipay:支付宝]
+ payBankCode             | VARCHAR(300)  | YES  |     |         | 转账的银行 只支持 收款方式[bank:网银转账]
+ payBankAccountName      | VARCHAR(300)  | YES  |     |         | 开户姓名 只支持 收款方式[bank:网银转账]
+ payBankAccountNum       | VARCHAR(300)  | YES  |     |         | 卡号 只支持 收款方式[bank:网银转账]
+ payOtherAccount         | VARCHAR(300)  | YES  |     |         | 卡号 暂支持 收款方式[alipay:支付宝]
+ recycleType             | VARCHAR(300)  | NO   |     |         | 回收方式[express:邮寄][facetoface:当面交易]
+ recycleTradeAddress     | VARCHAR(1000) | YES  |     |         | 取货地址,只支持回收方式[facetoface:当面交易]
+ recycleTradeAddressCity | VARCHAR(1000) | YES  |     |         | 取货的城市,只支持回收方式[facetoface:当面交易]
+ recycleTradeTime        | DATETIME(19)  | YES  |     |         | 交易时间,只支持回收方式[facetoface:当面交易]
+ recycleExpress          | VARCHAR(300)  | YES  |     |         | 快递,只支持回收方式[express:邮寄]
+ recycleExpressCode      | VARCHAR(300)  | YES  |     |         | 快递单号,只支持回收方式[express:邮寄]
+ prdProductId            | INT(10)       | NO   |     |         | 产品ID    
+ prdProductName          | VARCHAR(300)  | NO   |     |         | 产品名称    
+ assessPrice             | INT(10)       | YES  |     |         | 评估价格    
+ tradePrice              | INT(10)       | YES  |     |         | 最终成交价格  
+ machinePassword         | VARCHAR(1000) | YES  |     |         | 机器密码，只支持苹果
+ status                  | VARCHAR(300)  | NO   |     |         | 订单状态 
+	[WAIT_EXPRESS:待发货-如果用户提交的是邮寄方式，客服确认完订单后，状态是待发货]
+	[WAIT_VISIT:待上门收货-如果用户提交的是上门回收方式，客服确认完订单后，状态是待上门收货]
+	[WAIT_TAKE:待收货-用户邮寄完毕，填写完快递单之后，状态变成待收货]
+	[HAS_RECEIVE:已收货-公司收到手机，状态变成已收货]
+	[FINISH:已完成-公司收到手机，质检完毕，或者代理商上门质检完毕，用户同意价格，公司打款完，或者代理商现场结算完毕，订单状态为已完成]
+	[CLOSE:已关闭-客服确认失败，或者用户自己取消，或者不同意金额。状态为已关闭]
+ detail                  | VARCHAR(3000) | YES  |     |         | 订单的产品详情 
+ remark                  | VARCHAR(1000) | YES  |     |         | 备注      
+ createTime              | DATETIME(19)  | YES  |     |         | 创建时间    
+ createUser              | VARCHAR(100)  | YES  |     | system  | 创建人     
+-------------------------+---------------+------+-----+---------+---------
+
+Table: other_big_recycle
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | INT(10)       | NO   | PRI |         |         
+ company    | VARCHAR(300)  | YES  |     |         | 公司名称    
+ contact    | VARCHAR(300)  | YES  |     |         | 联系人     
+ tel        | VARCHAR(300)  | YES  |     |         | 电话      
+ remark     | VARCHAR(3000) | YES  |     |         | 情况说明    
+ createTime | DATETIME(19)  | YES  |     |         | 创建时间    
+------------+---------------+------+-----+---------+---------
+
+Table: other_join
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | INT(10)       | NO   | PRI |         |         
+ contact    | VARCHAR(300)  | YES  |     |         | 姓名      
+ tel        | VARCHAR(300)  | YES  |     |         | 电话      
+ address    | VARCHAR(1000) | YES  |     |         | 所在地址    
+ remark     | VARCHAR(3000) | YES  |     |         | 加盟理由    
+ createTime | DATETIME(19)  | YES  |     |         | 创建时间    
+------------+---------------+------+-----+---------+---------
+
+Table: other_new_product
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | INT(10)       | NO   | PRI |         |         
+ tel        | VARCHAR(300)  | YES  |     |         |         
+ brand      | VARCHAR(300)  | YES  |     |         | 品牌      
+ name       | VARCHAR(300)  | YES  |     |         | 产品型号    
+ remark     | VARCHAR(2000) | YES  |     |         | 备注      
+ createTime | DATETIME(19)  | YES  |     |         | 创建时间    
+------------+---------------+------+-----+---------+---------
+
+Table: prd_clazz_brand
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | INT(10)      | NO   | PRI |         | 节点ID    
+ pId        | INT(10)      | NO   |     |         | 父节点ID [0:类别][其他:品牌]
+ name       | VARCHAR(20)  | NO   |     |         | 名称      
+ isShow     | VARCHAR(1)   | NO   |     | 1       | 是否显示[1:显示][0:不显示]
+ createTime | DATETIME(19) | YES  |     |         | 创建时间    
+ createUser | VARCHAR(100) | YES  |     | system  | 创建人     
+------------+--------------+------+-----+---------+---------
+
+Table: prd_package
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | INT(10)       | NO   | PRI |         |         
+ name       | VARCHAR(300)  | NO   |     |         | 描述包名称   
+ remark     | VARCHAR(1000) | NO   |     |         | 备注      
+ createTime | DATETIME(19)  | YES  |     |         | 创建时间    
+ createUser | VARCHAR(100)  | YES  |     | system  | 创建人     
+------------+---------------+------+-----+---------+---------
+
+Table: prd_package_item
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ packageId  | INT(10)       | NO   | PRI |         | 描述包ID   
+ id         | INT(10)       | NO   | PRI |         | 节点ID    
+ pId        | INT(10)       | NO   |     |         | 父节点ID   
+ name       | VARCHAR(300)  | NO   |     |         | 描述项名称   
+ value      | DECIMAL(10,3) | YES  |     | 0.000   | 描述项的值   
+ selOpt     | VARCHAR(20)   | NO   |     | single  | 选择类型 [single:只能单选][multi:任意]
+ level      | INT(10)       | NO   |     |         | 层级从0开始  
+ seq        | INT(10)       | NO   |     | 0       |         
+ createTime | DATETIME(19)  | YES  |     |         | 创建时间    
+ createUser | VARCHAR(100)  | YES  |     | system  | 创建人     
+------------+---------------+------+-----+---------+---------
+
+Table: prd_product
+--------------------+---------------+------+-----+---------+---------
+ Field              | Type          | Null | Key | Default | Remarks 
+--------------------+---------------+------+-----+---------+---------
+ id                 | INT(10)       | NO   | PRI |         |         
+ clazzId            | INT(10)       | NO   |     |         | 类别ID    
+ brandId            | INT(10)       | NO   |     |         | 品牌ID    
+ prdPackageId       | INT(10)       | NO   |     |         | 描述包ID   
+ name               | VARCHAR(300)  | NO   |     |         | 产品名称-产品型号
+ isHot              | VARCHAR(2)    | NO   |     | N       | 是否热门[N:否][Y:是]
+ isBan              | VARCHAR(2)    | NO   |     | N       | 是否下架[N:否][Y:是]
+ imgUrlThumb        | VARCHAR(1000) | YES  |     |         | 图像地址_缩略图
+ imgUrl             | VARCHAR(1000) | YES  |     |         | 图像地址    
+ hasRecycleQuantity | INT(10)       | YES  |     | 0       | 已回收数量   
+ recycleMaxMoney    | INT(10)       | YES  |     |         | 回收最高价   
+ basePrice          | INT(10)       | YES  |     |         | 基本价格    
+ limitPrice         | INT(10)       | YES  |     |         | 最低控制价格  
+ basePriceCombine   | VARCHAR(4000) | YES  |     |         | 基本组合价格,JSON格式
+ remark             | VARCHAR(1000) | YES  |     |         | 备注      
+ createTime         | DATETIME(19)  | YES  |     |         | 创建时间    
+ createUser         | VARCHAR(100)  | YES  |     | system  | 创建人     
+--------------------+---------------+------+-----+---------+---------
+
+Table: sys_admin
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | INT(10)      | NO   | PRI |         |         
+ username   | VARCHAR(20)  | NO   |     |         | 账户      
+ password   | VARCHAR(20)  | NO   |     |         | 密码      
+ status     | VARCHAR(2)   | NO   |     | 1       | 状态 [1:有效] [2:无效]
+ type       | VARCHAR(2)   | NO   |     | 1       | 类型 [1:操作员] [2:加盟商]
+ zone       | VARCHAR(20)  | YES  |     |         | 加盟商地区号  
+ contact    | VARCHAR(300) | YES  |     |         | 联系姓名    
+ tel        | VARCHAR(11)  | YES  |     |         | 联系电话    
+ address    | VARCHAR(300) | YES  |     |         | 地址      
+ createTime | DATETIME(19) | YES  |     |         | 创建时间    
+ createUser | VARCHAR(20)  | YES  |     | system  | 创建人     
+------------+--------------+------+-----+---------+---------
+
+Table: sys_param
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | INT(10)       | NO   | PRI |         |         
+ paramType  | VARCHAR(200)  | NO   |     |         | 参数类型    
+ paramCode  | VARCHAR(200)  | NO   |     |         | 参数代码    
+ paramDesc  | VARCHAR(1000) | NO   |     |         | 参数名称    
+ status     | VARCHAR(2)    | NO   |     | 1       | 状态 [1:有效] [2:无效]
+ createTime | DATETIME(19)  | YES  |     |         | 创建时间    
+ createUser | VARCHAR(20)   | YES  |     | system  | 创建人     
+------------+---------------+------+-----+---------+---------
+
+Table: user
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | INT(10)      | NO   | PRI |         |         
+ username   | VARCHAR(20)  | NO   |     |         | 用户账户    
+ status     | VARCHAR(2)   | NO   |     | 1       | 状态 [1:有效] [2:无效]
+ tel        | VARCHAR(11)  | YES  |     |         | 联系电话    
+ createTime | DATETIME(19) | YES  |     |         | 创建时间    
+ createUser | VARCHAR(20)  | YES  |     | system  | 创建人     
+------------+--------------+------+-----+---------+---------
+

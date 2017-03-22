@@ -1,0 +1,4 @@
+2017-03-20 23:27:38,531 [main] [ - ]  - Configuration problem for cache sampleCache1: MaxEntriesLocalHeap equal or greater than MaxEntriesLocalDisk. This will result in useless disk storage.
+2017-03-20 23:27:38,542 [main] [ - ]  - Configuration problem for cache CLAZZ_BRAND: MaxEntriesLocalHeap equal or greater than MaxEntriesLocalDisk. This will result in useless disk storage.
+2017-03-20 23:27:38,572 [main] [ - ]  - Configuration problem for cache PACKAGE: MaxEntriesLocalHeap equal or greater than MaxEntriesLocalDisk. This will result in useless disk storage.
+2017-03-20 23:27:38,581 [main] [ - ]  - Configuration problem for cache PACKAGE_ITEMS: MaxEntriesLocalHeap equal or greater than MaxEntriesLocalDisk. This will result in useless disk storage.
