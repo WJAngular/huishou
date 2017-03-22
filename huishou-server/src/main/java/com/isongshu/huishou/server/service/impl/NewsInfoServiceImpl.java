@@ -18,7 +18,6 @@ public class NewsInfoServiceImpl implements NewsInfoService {
 
 	@Override
 	public List<NewsInfo> find(NewsInfo t) {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 
@@ -30,7 +29,6 @@ public class NewsInfoServiceImpl implements NewsInfoService {
 
 	@Override
 	public Page<NewsInfo> paginate(int pageNumber, int pageSize, NewsInfo t) {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 
