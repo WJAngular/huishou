@@ -68,6 +68,9 @@
 		<dubbo:service interface="com.isongshu.huishou.skeleton.service.OtherJoinService"
 		ref="otherJoinService" />
 		
+		<dubbo:service interface="com.isongshu.huishou.skeleton.service.NewsInfoService"
+		ref="newsInfoService" />
+		
 				
 
 </beans>

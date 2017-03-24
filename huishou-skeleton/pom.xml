@@ -6,9 +6,9 @@
 	<artifactId>huishou-skeleton</artifactId>
 	<version>1.0.2</version>
 	<packaging>jar</packaging>
-
+	
 	<name>huishou-skeleton</name>
-
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -177,6 +177,7 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			
 		</plugins>
 	</build>
 	

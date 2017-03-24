@@ -27,6 +27,9 @@
 <script src="<%=request.getContextPath()%>/semantic/highlight.min.js"></script>
 <script src="<%=request.getContextPath()%>/semantic/docs.js"></script>
 <script src="<%=request.getContextPath()%>/semantic/less.min.js"></script>
+<script src="<%=request.getContextPath()%>/lib/ueditor/ueditor.config.js"></script>
+<script src="<%=request.getContextPath()%>/lib/ueditor/ueditor.all.min.js"></script>
+<script src="<%=request.getContextPath()%>/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
 
 <script type="text/javascript">
 // $('.ui.selection.dropdown').dropdown();
@@ -103,6 +106,7 @@
 					  	  <a class="item" onclick="to_page('/otherJoin','1')">代理商申请</a>
 					      <a class="item" onclick="to_page('/otherNewProduct','1')">新型号管理</a>
 					      <a class="item" onclick="to_page('/otherBigRecycle','1')">量大回收管理</a>
+					      <a class="item" onclick="to_page('/newsInfo','1')">新闻管理</a>
 					  </div>
 					</div>
 				</c:if>
@@ -132,11 +136,11 @@
 		
 		
 	<!-- 编辑模块-->
-	<div class="ui  long modal" id="addOrUpdateModal">
+	<div class="ui  long modal" id="addOrUpdateModal" style="position:absolute; height:800px;overflow:auto">
 	</div><!-- 编辑模块-->
 	
 	<!-- 编辑模块-->
-	<div class="ui  long large modal" id="addOrUpdateLargeModal">
+	<div class="ui  long large modal" id="addOrUpdateLargeModal" style="position:absolute; height:800px;overflow:auto">
 	</div><!-- 编辑模块-->
 	
 	
@@ -267,9 +271,7 @@
 		;
 	}
 	
-	
-	to_page('/orderInfo')
-	
+	to_page('/newsInfo')
 	</script>
 
 

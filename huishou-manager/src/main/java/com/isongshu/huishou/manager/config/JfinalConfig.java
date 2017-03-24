@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.isongshu.huishou.manager.controller.IndexController;
+import com.isongshu.huishou.manager.controller.NewsInfoController;
 import com.isongshu.huishou.manager.controller.OrderInfoController;
 import com.isongshu.huishou.manager.controller.OtherBigRecycleController;
 import com.isongshu.huishou.manager.controller.OtherJoinController;
@@ -70,6 +71,7 @@ public class JfinalConfig extends JFinalConfig {
 		me.add("/prdClazzBrand",PrdClazzBrandController.class);
 		me.add("/prdProduct",PrdProductController.class);
 		me.add("/orderInfo",OrderInfoController.class);
+		me.add("/newsInfo",NewsInfoController.class);
 		
 		me.add("/otherBigRecycle",OtherBigRecycleController.class);
 		me.add("/otherJoin",OtherJoinController.class);

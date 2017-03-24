@@ -47,7 +47,7 @@ public class OrderInfoController extends _Controller{
 	public void index() {
 		
 		
-		OrderInfo orderInfo = getBean(OrderInfo.class, "object");
+ 		OrderInfo orderInfo = getBean(OrderInfo.class, "object");
 		
 		
 		//做代理商权限设置，只能看到自己代理地方的订单
@@ -120,10 +120,6 @@ public class OrderInfoController extends _Controller{
 		}
 		renderJson(jsonMessage);
 	}
-	
-	
-	
-	
 	
 	
 	public void add() {

@@ -21,6 +21,18 @@ public abstract class BaseNewsInfo<M extends BaseNewsInfo<M>> extends Model<M> i
 		return "id";
 	}
 
+	public void setType(java.lang.String type) {
+		set("type", type);
+	}
+
+	public java.lang.String getType() {
+		return get("type");
+	}
+
+	public String getTypeColumnName() {
+		return "type";
+	}
+
 	public void setTitle(java.lang.String title) {
 		set("title", title);
 	}
@@ -93,11 +105,11 @@ public abstract class BaseNewsInfo<M extends BaseNewsInfo<M>> extends Model<M> i
 		return "content";
 	}
 
-	public void setStatus(java.lang.Integer status) {
+	public void setStatus(java.lang.String status) {
 		set("status", status);
 	}
 
-	public java.lang.Integer getStatus() {
+	public java.lang.String getStatus() {
 		return get("status");
 	}
 
