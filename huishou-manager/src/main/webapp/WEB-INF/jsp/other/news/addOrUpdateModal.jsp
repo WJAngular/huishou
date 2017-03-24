@@ -123,7 +123,6 @@
 	};
 	
 	function showUeditor(){
-		var html = "${object.content}";
   		//实例化编辑器
 		var ue = UE.getEditor('editor');
 	};
