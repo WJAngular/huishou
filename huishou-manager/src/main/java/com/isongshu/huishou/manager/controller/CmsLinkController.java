@@ -49,8 +49,8 @@ public class CmsLinkController extends _Controller {
 		JsonMessage jsonMessage = new JsonMessage();
 		try {
 			CmsLink cmsLink = getBean(CmsLink.class, "object");
-			if(StringUtils.isEmpty(cmsLink.getIsvaild())){
-				cmsLink.setIsvaild("N");
+			if(StringUtils.isEmpty(cmsLink.getIsvalid())){
+				cmsLink.setIsvalid("N");
 			}
 			cmsLink.setCreateTime(new Date());
 			cmsLinkService.save(cmsLink);
@@ -67,8 +67,8 @@ public class CmsLinkController extends _Controller {
 		JsonMessage jsonMessage = new JsonMessage();
 		try {
 			CmsLink cmsLink = getBean(CmsLink.class, "object");
-			if(StringUtils.isEmpty(cmsLink.getIsvaild())){
-				cmsLink.setIsvaild("N");
+			if(StringUtils.isEmpty(cmsLink.getIsvalid())){
+				cmsLink.setIsvalid("N");
 			}
 			cmsLinkService.update(cmsLink);
 			jsonMessage.success();
