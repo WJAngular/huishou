@@ -16,7 +16,7 @@
 					  <i class="right chevron icon divider"></i>
 					  <a class="section">其他模块</a>
 					  <i class="right chevron icon divider"></i>
-					  <div class="active section">新闻管理</div>
+					  <div class="active section">友情链接管理</div>
 					</div>
 				</div>
 			</div><!-- 头部导航 -->
@@ -40,18 +40,18 @@
 									<div class="two fields">
 								       <div class="field">
 								        <label>类别</label>
-								         <select class="ui dropdown" name="object.type">
+								         <select class="ui dropdown" name="object.linkType">
 											  <option value="">请选择</option>
-											  <option value="1" ${object.type == '1' ? 'selected':'' }>内部新闻</option>
-											  <option value="2" ${object.type == '2' ? 'selected':'' }>外部新闻</option>
+											  <option value="1" ${object.linkType == '1' ? 'selected':'' }>门户网站</option>
+											  <option value="2" ${object.linkType == '2' ? 'selected':'' }>论坛博客</option>
 									 	</select>
 								      </div>
 							      	  <div class="field">
 								      	  <label>是否有效</label>
-									        <select class="ui dropdown" name="object.status">
+									        <select class="ui dropdown" name="object.isvalid">
 												  <option value="">请选择</option>
-												  <option value="Y" ${object.status ==  'Y' ? 'selected':''}>是</option>
-												  <option value="N" ${object.status ==  'N' ? 'selected':''}>否</option>
+												  <option value="Y" ${object.isvalid ==  'Y' ? 'selected':''}>是</option>
+												  <option value="N" ${object.isvalid ==  'N' ? 'selected':''}>否</option>
 										 	</select>
 								      	</div>
 								    </div>
@@ -59,8 +59,8 @@
 									<div class="two fields">
 										
 										 <div class="field">
-									        <label>新闻标题</label>
-									        <input type="text" name="object.title" placeholder="新闻标题" value="${object.title }">
+									        <label>链接名称</label>
+									        <input type="text" name="object.linkName" placeholder="链接名称" value="${object.linkName }">
 									     </div>
 										
 										<div class="field">
@@ -91,7 +91,7 @@
 										 </div></th>
 								<th>序号</th>		        
 								<th>类别</th>
-								<th>标题</th>
+								<th>名称</th>
 								<th>是否有效</th>
 								<th>创建时间</th>
 								<th>操作 </th>
@@ -107,9 +107,9 @@
 										        </div>
 										</td>
 										<td>${ object.id}</td>
-										<td>${ object.type == '1' ? '内部新闻' : '外部新闻' }</td>
-										<td>${ object.title}</td>
-										<td>${ object.status == 'Y' ? '是' : '否' }</td>
+										<td>${ object.linkType == '1' ? '门户网站' : '论坛博客' }</td>
+										<td>${ object.linkName}</td>
+										<td>${ object.isvalid == 'Y' ? '是' : '否' }</td>
 										<td><fmt:formatDate value="${ object.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 										<td >
 											<div class="ui mini icon buttons">

@@ -71,6 +71,7 @@
 		<dubbo:service interface="com.isongshu.huishou.skeleton.service.NewsInfoService"
 		ref="newsInfoService" />
 		
-				
+		<dubbo:service interface="com.isongshu.huishou.skeleton.service.CmsLinkService"
+		ref="cmsLinkService" />
 
 </beans>

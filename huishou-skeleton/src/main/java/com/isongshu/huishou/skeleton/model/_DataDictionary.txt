@@ -1,3 +1,18 @@
+Table: Cms_Link
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | INT(10)       | NO   | PRI |         |         
+ linkName   | VARCHAR(50)   | YES  |     |         |         
+ linkType   | VARCHAR(50)   | YES  |     |         |         
+ linkUrl    | VARCHAR(1000) | YES  |     |         |         
+ iconUrl    | VARCHAR(1000) | YES  |     |         |         
+ remark     | VARCHAR(1000) | YES  |     |         |         
+ orderby    | INT(10)       | YES  |     |         |         
+ createTime | DATETIME(19)  | YES  |     |         |         
+ isvalid    | VARCHAR(2)    | YES  |     |         |         
+------------+---------------+------+-----+---------+---------
+
 Table: code
 ------------+--------------+------+-----+---------+---------
  Field      | Type         | Null | Key | Default | Remarks 
@@ -10,20 +25,20 @@ Table: code
 ------------+--------------+------+-----+---------+---------
 
 Table: news_info
-------------+---------------+------+-----+---------+---------
- Field      | Type          | Null | Key | Default | Remarks 
-------------+---------------+------+-----+---------+---------
- id         | INT(10)       | NO   | PRI |         |         
- type       | VARCHAR(10)   | YES  |     |         | 类别      
- title      | VARCHAR(100)  | YES  |     |         | 新闻标题    
- newsUrl    | VARCHAR(100)  | YES  |     |         | 新闻链接    
- iconUrl    | VARCHAR(100)  | YES  |     |         | 图片链接    
- summary    | VARCHAR(500)  | YES  |     |         | 新闻摘要    
- createTime | DATETIME(19)  | YES  |     |         | 创建时间    
- content    | VARCHAR(1000) | YES  |     |         | 新闻内容    
- status     | VARCHAR(10)   | YES  |     |         | 状态      
- remark     | VARCHAR(500)  | YES  |     |         | 备注      
-------------+---------------+------+-----+---------+---------
+------------+----------------------+------+-----+---------+---------
+ Field      | Type                 | Null | Key | Default | Remarks 
+------------+----------------------+------+-----+---------+---------
+ id         | INT(10)              | NO   | PRI |         |         
+ type       | VARCHAR(10)          | YES  |     |         | 类别      
+ title      | VARCHAR(100)         | YES  |     |         | 新闻标题    
+ newsUrl    | VARCHAR(100)         | YES  |     |         | 新闻链接    
+ iconUrl    | VARCHAR(100)         | YES  |     |         | 图片链接    
+ summary    | TEXT(65535)          | YES  |     |         | 新闻摘要    
+ createTime | DATETIME(19)         | YES  |     |         | 创建时间    
+ content    | LONGTEXT(2147483647) | YES  |     |         | 新闻内容    
+ status     | VARCHAR(10)          | YES  |     |         | 状态      
+ remark     | VARCHAR(500)         | YES  |     |         | 备注      
+------------+----------------------+------+-----+---------+---------
 
 Table: order_info
 -------------------------+---------------+------+-----+---------+---------

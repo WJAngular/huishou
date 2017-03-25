@@ -107,6 +107,7 @@
 					      <a class="item" onclick="to_page('/otherNewProduct','1')">新型号管理</a>
 					      <a class="item" onclick="to_page('/otherBigRecycle','1')">量大回收管理</a>
 					      <a class="item" onclick="to_page('/newsInfo','1')">新闻管理</a>
+					      <a class="item" onclick="to_page('/linkInfo','1')">友情链接管理</a>
 					  </div>
 					</div>
 				</c:if>

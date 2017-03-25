@@ -3,18 +3,19 @@ package com.isongshu.huishou.manager.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.isongshu.huishou.manager.controller.CmsLinkController;
 import com.isongshu.huishou.manager.controller.IndexController;
 import com.isongshu.huishou.manager.controller.NewsInfoController;
 import com.isongshu.huishou.manager.controller.OrderInfoController;
 import com.isongshu.huishou.manager.controller.OtherBigRecycleController;
 import com.isongshu.huishou.manager.controller.OtherJoinController;
 import com.isongshu.huishou.manager.controller.OtherNewProductController;
-import com.isongshu.huishou.manager.controller.SysParamController;
 import com.isongshu.huishou.manager.controller.PrdClazzBrandController;
 import com.isongshu.huishou.manager.controller.PrdPackageController;
 import com.isongshu.huishou.manager.controller.PrdPackageItemController;
 import com.isongshu.huishou.manager.controller.PrdProductController;
 import com.isongshu.huishou.manager.controller.SysAdminController;
+import com.isongshu.huishou.manager.controller.SysParamController;
 import com.isongshu.huishou.manager.controller.SystemController;
 import com.isongshu.huishou.manager.controller.UserController;
 import com.jfinal.config.Constants;
@@ -72,6 +73,7 @@ public class JfinalConfig extends JFinalConfig {
 		me.add("/prdProduct",PrdProductController.class);
 		me.add("/orderInfo",OrderInfoController.class);
 		me.add("/newsInfo",NewsInfoController.class);
+		me.add("/linkInfo",CmsLinkController.class);
 		
 		me.add("/otherBigRecycle",OtherBigRecycleController.class);
 		me.add("/otherJoin",OtherJoinController.class);
