@@ -61,8 +61,8 @@ public class UserController extends _Controller {
 	public void home() {
 		//显示订单信息
 		OrderInfo orderInfo = new OrderInfo();
-//		orderInfo.setContactTel(getUser().getTel());
-		orderInfo.setContactTel("13034898429");
+		orderInfo.setContactTel(getUser().getTel());
+//		orderInfo.setContactTel("13034898429");
 		
 		
 		String USER_AGENT = getRequest().getHeader("User-Agent");
@@ -159,8 +159,8 @@ public class UserController extends _Controller {
 			
 			OrderInfo orderInfoCondition = new OrderInfo();
 			orderInfoCondition.setId(Integer.valueOf(id));
-//			orderInfoCondition.setContactTel(getUser().getTel());
-			orderInfoCondition.setContactTel("13034898429");
+			orderInfoCondition.setContactTel(getUser().getTel());
+//			orderInfoCondition.setContactTel("13034898429");
 			List<OrderInfo> orderInfos = orderInfoService.find(orderInfoCondition);
 			if(orderInfos == null){
 				logger.warn("订单信息不存在");
@@ -192,8 +192,8 @@ public class UserController extends _Controller {
 			
 			OrderInfo orderInfoCondition = new OrderInfo();
 			orderInfoCondition.setId(Integer.valueOf(id));
-//			orderInfoCondition.setContactTel(getUser().getTel());
-			orderInfoCondition.setContactTel("13034898429");
+			orderInfoCondition.setContactTel(getUser().getTel());
+//			orderInfoCondition.setContactTel("13034898429");
 			List<OrderInfo> orderInfos = orderInfoService.find(orderInfoCondition);
 			if(orderInfos == null){
 				logger.warn("订单信息不存在");
@@ -229,10 +229,10 @@ public class UserController extends _Controller {
 			OrderInfo orderInfoCondition = new OrderInfo();
 			CommentInfo commentInfoCondition = new CommentInfo();
 			orderInfoCondition.setId(Integer.valueOf(id));
-//			orderInfoCondition.setContactTel(getUser().getTel());
-//			commentInfoCondition.setContactTel(getUser().getTel());
-			orderInfoCondition.setContactTel("13034898429");
-			commentInfoCondition.setContactTel("13034898429");
+			orderInfoCondition.setContactTel(getUser().getTel());
+			commentInfoCondition.setContactTel(getUser().getTel());
+//			orderInfoCondition.setContactTel("13034898429");
+//			commentInfoCondition.setContactTel("13034898429");
 			List<OrderInfo> orderInfos = orderInfoService.find(orderInfoCondition);
 			List<CommentInfo> commentInfos = commentInfoService.find(commentInfoCondition);
 			List<SysParam> orderStatus = sysParamService.getOrderStatus();
