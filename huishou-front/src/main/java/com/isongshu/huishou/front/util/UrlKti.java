@@ -32,6 +32,8 @@ public class UrlKti {
 	
 	public static String USER_ORDER_INFO_JSP="/user/order/order_info.jsp";
 	
+	public static String USER_ORDER_COMMENT_JSP="/user/order/comment_info.jsp";
+	
 	
 	
 	

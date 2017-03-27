@@ -60,6 +60,9 @@
 							   			<c:if test="${ object.status !=  'WAIT_EXPRESS'}">
 							   				<button class="ui button" onclick="toOrderInfo(${ object.id})">查看详情</button>
 							   			</c:if>
+							   			<c:if test="${object.status == 'FINISH' }">
+							   				<button class="ui button" onclick="toOrderComment(${ object.id})">评价详情</button>
+							   			</c:if>
 							   		</c:if>
 							   </c:forEach>
 							   
@@ -94,6 +97,7 @@
 	this.toExpressActionUrl = "/user/toExpress"
 	this.toOrderInfoActionUrl = "/user/toOrderInfo"
 	this.cancelOrderActionUrl = "/user/cancelOrder"
+	this.toOrderCommentActionUrl = "/user/toOrderComment"
 		
 	$(document).ready(function() {
 	
@@ -121,7 +125,12 @@
 	//跳转到查看订单信息页面
 	function toOrderInfo(id){
 		var actionParams = {"id":id};
-		standardPost(this.toOrderInfoActionUrl,actionParams)
+		standardPost(this.toOrderInfoActionUrl,actionParams);
+	}
+	//跳转到订单评价详情页面
+	function toOrderComment(id){
+		var actionParams = {"id":id};
+		standardPost(this.toOrderCommentActionUrl,actionParams);
 	}
 </script>
 <jsp:include page="/layout/footer.jsp"></jsp:include>

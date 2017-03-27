@@ -1,6 +1,7 @@
 package com.isongshu.huishou.front.controller;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -9,8 +10,10 @@ import org.slf4j.LoggerFactory;
 import com.isongshu.huishou.front.interceptor.IsLoginInterceptor;
 import com.isongshu.huishou.front.util.HelpKit;
 import com.isongshu.huishou.front.util.UrlKti;
+import com.isongshu.huishou.skeleton.model.CommentInfo;
 import com.isongshu.huishou.skeleton.model.OrderInfo;
 import com.isongshu.huishou.skeleton.model.SysParam;
+import com.isongshu.huishou.skeleton.service.CommentInfoService;
 import com.isongshu.huishou.skeleton.service.DbBaseService;
 import com.isongshu.huishou.skeleton.service.OrderInfoService;
 import com.isongshu.huishou.skeleton.service.PrdClazzBrandService;
@@ -19,6 +22,7 @@ import com.isongshu.huishou.skeleton.service.PrdProductService;
 import com.isongshu.huishou.skeleton.service.SmsService;
 import com.isongshu.huishou.skeleton.service.SysParamService;
 import com.isongshu.huishou.skeleton.service.UserService;
+import com.isongshu.huishou.skeleton.util.JsonMessage;
 import com.isongshu.huishou.skeleton.util.OrderInfoStatus;
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.Page;
@@ -51,12 +55,14 @@ public class UserController extends _Controller {
 	private OrderInfoService orderInfoService;
 	@Inject.BY_NAME
 	private SysParamService sysParamService;
-	
+	@Inject.BY_NAME
+	private CommentInfoService commentInfoService;
 	
 	public void home() {
 		//显示订单信息
 		OrderInfo orderInfo = new OrderInfo();
-		orderInfo.setContactTel(getUser().getTel());
+//		orderInfo.setContactTel(getUser().getTel());
+		orderInfo.setContactTel("13034898429");
 		
 		
 		String USER_AGENT = getRequest().getHeader("User-Agent");
@@ -153,7 +159,8 @@ public class UserController extends _Controller {
 			
 			OrderInfo orderInfoCondition = new OrderInfo();
 			orderInfoCondition.setId(Integer.valueOf(id));
-			orderInfoCondition.setContactTel(getUser().getTel());
+//			orderInfoCondition.setContactTel(getUser().getTel());
+			orderInfoCondition.setContactTel("13034898429");
 			List<OrderInfo> orderInfos = orderInfoService.find(orderInfoCondition);
 			if(orderInfos == null){
 				logger.warn("订单信息不存在");
@@ -185,7 +192,8 @@ public class UserController extends _Controller {
 			
 			OrderInfo orderInfoCondition = new OrderInfo();
 			orderInfoCondition.setId(Integer.valueOf(id));
-			orderInfoCondition.setContactTel(getUser().getTel());
+//			orderInfoCondition.setContactTel(getUser().getTel());
+			orderInfoCondition.setContactTel("13034898429");
 			List<OrderInfo> orderInfos = orderInfoService.find(orderInfoCondition);
 			if(orderInfos == null){
 				logger.warn("订单信息不存在");
@@ -210,8 +218,52 @@ public class UserController extends _Controller {
 		
 	}
 	
+	//跳转到评价详情页面
+	public void toOrderComment(){
+		try {
+			String id = getPara("id");
+			if(id == null || id.equals("")){
+				logger.warn("订单编号不存在{}",id);
+				redirect(UrlKti.USER_HOME_ACTION);return;
+			}
+			OrderInfo orderInfoCondition = new OrderInfo();
+			CommentInfo commentInfoCondition = new CommentInfo();
+			orderInfoCondition.setId(Integer.valueOf(id));
+//			orderInfoCondition.setContactTel(getUser().getTel());
+//			commentInfoCondition.setContactTel(getUser().getTel());
+			orderInfoCondition.setContactTel("13034898429");
+			commentInfoCondition.setContactTel("13034898429");
+			List<OrderInfo> orderInfos = orderInfoService.find(orderInfoCondition);
+			List<CommentInfo> commentInfos = commentInfoService.find(commentInfoCondition);
+			List<SysParam> orderStatus = sysParamService.getOrderStatus();
+			if(orderInfos == null){
+				logger.warn("订单信息不存在");
+				redirect(UrlKti.USER_HOME_ACTION);return;
+			}
+			setAttr("orderInfo",orderInfos.get(0));
+			setAttr("orderStatus",orderStatus);
+			setAttr("object", commentInfos != null && commentInfos.size() > 0?commentInfos.get(0):null);
+			render("/user/order/comment_info.jsp");
+			to(UrlKti.USER_ORDER_COMMENT_JSP);
+		} catch (Exception e) {
+			logger.error("跳转到订单信息页面{}",e.getMessage(),e);
+			redirect(UrlKti.USER_HOME_ACTION);
+		}
+	}
 	
-	
-	
+	public void saveComment(){
+		try {
+			CommentInfo commentInfo = getBean(CommentInfo.class,"object");
+			commentInfo.setCreateTime(new Date());
+			commentInfoService.save(commentInfo);
+			//保存成功之后，跳转到订单信息页面
+			logger.info("跳转到订单信息页面");
+			redirect(UrlKti.USER_HOME_ACTION);
+		} catch (Exception e) {
+			logger.error("跳转到订单信息页面{}",e.getMessage(),e);
+			redirect(UrlKti.USER_HOME_ACTION);
+		}
+		
+	}
 	
 }

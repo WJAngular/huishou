@@ -69,6 +69,10 @@
 	<dubbo:reference id="otherJoinService"
 		interface="com.isongshu.huishou.skeleton.service.OtherJoinService" 
 		url="${DIS_CONNECT}"/>	
+		
+	<dubbo:reference id="commentInfoService"
+		interface="com.isongshu.huishou.skeleton.service.CommentInfoService" 
+		url="${DIS_CONNECT}"/>	
 	
 	
 	

@@ -18,6 +18,7 @@ public class _MappingKit {
 	public static void mapping(ActiveRecordPlugin arp) {
 		arp.addMapping("Cms_Link", "id", CmsLink.class);
 		arp.addMapping("code", "id", Code.class);
+		arp.addMapping("comment_info", "id", CommentInfo.class);
 		arp.addMapping("news_info", "id", NewsInfo.class);
 		arp.addMapping("order_info", "id", OrderInfo.class);
 		arp.addMapping("other_big_recycle", "id", OtherBigRecycle.class);
