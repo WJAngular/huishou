@@ -56,21 +56,21 @@
 		
 		
 		if(addOrUpdate == 'update'){
-			submitForm(updateActionUrl,paramArray,actionUrl,'editForm','addOrUpdateLargeModal');
+			submitForm(updateActionUrl,paramArray,actionUrl,'editForm','addOrUpdateLargeModalUeditor');
 		}
 		else if (addOrUpdate == 'add'){
-			submitForm(addActionUrl,paramArray,actionUrl,'editForm','addOrUpdateLargeModal');
+			submitForm(addActionUrl,paramArray,actionUrl,'editForm','addOrUpdateLargeModalUeditor');
 		}
 		
-		//防止第二次加载时不显示，所以每次加载之后，必须销毁
-		UE.getEditor('editor').destroy();
+// 		//防止第二次加载时不显示，所以每次加载之后，必须销毁
+// 		UE.getEditor('editor').destroy();
 	});
 
 	//取消
-	$("#cancelBtn").on("click",function(){
-		//防止第二次加载时不显示，所以每次加载之后，必须销毁
-		UE.getEditor('editor').destroy();
-	});
+// 	$("#cancelBtn").on("click",function(){
+// 		//防止第二次加载时不显示，所以每次加载之后，必须销毁
+// 		UE.getEditor('editor').destroy();
+// 	});
 	//表单验证器
 	$('#editForm')
 		  .form({
@@ -119,12 +119,17 @@
 	function uploadImage(){
 		$("#imageObject").attr('src',$("#imageSrc").val());
 		//自适应框框
-		$('#addOrUpdateLargeModal').modal('refresh');
+		$('#addOrUpdateLargeModalUeditor').modal('refresh');
 	};
 	
 	function showUeditor(){
   		//实例化编辑器
 		var ue = UE.getEditor('editor');
+  		$("#addOrUpdateLargeModalUeditor").modal({
+  			onHidden:function(){
+  				ue.destroy();
+  			}
+  		});
 	};
 </script>
 

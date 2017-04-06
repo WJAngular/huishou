@@ -35,7 +35,7 @@ public class CmsLinkServiceImpl implements CmsLinkService {
 			}
 			
 			if(!StringUtils.isEmpty(cmsLink.getLinkName())){
-				sql.append("and t."+cmsLink.getLinkName()+" like ?");
+				sql.append("and t."+cmsLink.getLinkNameColumnName()+" like ?");
 				paramer.add("%"+cmsLink.getLinkName()+"%");
 			}
 		}

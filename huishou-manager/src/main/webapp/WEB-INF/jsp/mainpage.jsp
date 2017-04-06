@@ -144,6 +144,9 @@
 	<div class="ui  long large modal" id="addOrUpdateLargeModal" style="position:absolute; height:800px;overflow:auto">
 	</div><!-- 编辑模块-->
 	
+	<!-- 编辑模块 -->
+	<div class="ui  long large modal" id="addOrUpdateLargeModalUeditor" style="position:absolute; height:800px;overflow:auto">
+	</div><!-- 编辑模块 -->
 	
 <div class="ui demo page dimmer">
     <div class="ui text loader">正在加载中</div>
@@ -164,20 +167,23 @@
 	this.CONTEXT_PATH = '<%=request.getContextPath()%>';	
 	this.path = CONTEXT_PATH;
 	
-	
-	
 	//退出
-	var logoutActionUrl = "/system/logout"
+	var logoutActionUrl = "/system/logout";
 	function logout(){
 		standardPost(this.logoutActionUrl,"");
 	}
 	
-	
+	//清空模态框内容
+	function emptyModal(){
+		$('#addOrUpdateLargeModal').html("");
+		$('#addOrUpdateModal').html("");
+		$('#addOrUpdateLargeModalUeditor').html("");
+	}
 	
 	//弹出窗口-更新
 	function openUpdateModal(id){
 		var data = {"id" : id};
-		$('#addOrUpdateModal').html("");
+		emptyModal();
 		load_page("addOrUpdateModal",toUpdateActionUrl,data);
 // 		$('#addOrUpdateModal').modal({blurring: true}) .modal('show');
 		$('#addOrUpdateModal') .modal('show');
@@ -185,7 +191,7 @@
 
 	//弹出窗口-新增
 	function openAddModal(){
-		$('#addOrUpdateModal').html("");
+		emptyModal();
 		load_page("addOrUpdateModal",toAddActionUrl);
 // 		$('#addOrUpdateModal').modal({blurring: true}) .modal('show');
 		$('#addOrUpdateModal') .modal('show');
@@ -195,7 +201,7 @@
 	//弹出大窗口-更新
 	function openUpdateLargeModal(id){
 		var data = {"id" : id};
-		$('#addOrUpdateLargeModal').html("");
+		emptyModal();
 		load_page("addOrUpdateLargeModal",toUpdateActionUrl,data);
 // 		$('#addOrUpdateLargeModal').modal({blurring: true}) .modal('show');
 		$('#addOrUpdateLargeModal') .modal('show');
@@ -204,10 +210,29 @@
 
 	//弹出大窗口-新增
 	function openAddLargeModal(){
-		$('#addOrUpdateLargeModal').html("");
+		emptyModal();
 		load_page("addOrUpdateLargeModal",toAddActionUrl);
 // 		$('#addOrUpdateLargeModal').modal({blurring: true}) .modal('show');
 		$('#addOrUpdateLargeModal') .modal('show');
+		//自适应框框
+	}
+	
+	//弹出大窗口-更新 ueditor
+	function openUpdateLargeModalUeditor(id){
+		var data = {"id" : id};
+		emptyModal();
+		load_page("addOrUpdateLargeModalUeditor",toUpdateActionUrl,data);
+// 		$('#addOrUpdateLargeModal').modal({blurring: true}) .modal('show');
+		$('#addOrUpdateLargeModalUeditor').modal('show');
+		
+	}
+
+	//弹出大窗口-新增 ueditor
+	function openAddLargeModalUeditor(){
+		emptyModal();
+		load_page("addOrUpdateLargeModalUeditor",toAddActionUrl);
+// 		$('#addOrUpdateLargeModal').modal({blurring: true}) .modal('show');
+		$('#addOrUpdateLargeModalUeditor') .modal('show');
 		//自适应框框
 	}
 	

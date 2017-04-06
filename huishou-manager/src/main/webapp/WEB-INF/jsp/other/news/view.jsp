@@ -30,7 +30,7 @@
 						<div class="fields">
 						
 							<div class="field">
-								<a id="addBtn" class="ui teal basic button" onclick="openAddLargeModal()"><i class="add user icon"></i>
+								<a id="addBtn" class="ui teal basic button" onclick="openAddLargeModalUeditor()"><i class="add user icon"></i>
 									新增
 								</a>
 							</div>
@@ -100,7 +100,7 @@
 						<tbody>
 							
 							<c:forEach items="${objectPage.getList() }" var="object">
-									<tr  id="tr${object.id}"  ondblclick="openUpdateLargeModal('${object.id}')">
+									<tr  id="tr${object.id}"  ondblclick="openUpdateLargeModalUeditor('${object.id}')">
 										 <td class="collapsing">
 									        <div class="ui fitted slider checkbox single" data-method="${object.id}">
 										          <input type="checkbox" data-method="${object.id}"> <label></label>
@@ -113,7 +113,7 @@
 										<td><fmt:formatDate value="${ object.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 										<td >
 											<div class="ui mini icon buttons">
-											  <button class="ui blue basic button " onclick="openUpdateLargeModal('${object.id}')">
+											  <button class="ui blue basic button " onclick="openUpdateLargeModalUeditor('${object.id}')">
 											  	<i class="configure icon"></i>编辑
 											  </button>
 											  <button class="ui red basic button " onclick="deleteById('${object.id}')">

@@ -36,7 +36,6 @@ function to_page(url,data){
 	function submitForm(actionUrl,actionParamArray,retSuccessUrl,actionFormObject,actionAddOrEditModalObject){
 		
 		actionUrl = actionUrl+(actionUrl.indexOf("?") == -1?'?':'&')+'rand='+Math.random();
-		
 		jQuery.ajax({
 			type:'post',
 			url : CONTEXT_PATH + actionUrl,

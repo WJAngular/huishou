@@ -6,7 +6,7 @@
 <script type="text/javascript">
 
 	//自适应框框
- 	//$('#addOrUpdateLargeModal').modal('refresh');
+//  	$('#addOrUpdateLargeModal').modal('refresh');
 
 	$('.ui.clazzBrand.dropdown').dropdown();
 	
