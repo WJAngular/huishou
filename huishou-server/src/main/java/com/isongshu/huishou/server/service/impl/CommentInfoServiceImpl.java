@@ -25,8 +25,8 @@ public class CommentInfoServiceImpl implements CommentInfoService {
 		
 		if(commentInfo != null){
 			if(!StringUtils.isEmpty(commentInfo.getContactTel())){
-				sql.append("and t." + commentInfo.getContactTelColumnName()+" = ?");
-				paramer.add(commentInfo.getContactTel());
+				sql.append("and t." + commentInfo.getContactTelColumnName()+" like ?");
+				paramer.add("%"+commentInfo.getContactTel()+"%");
 			}
 		}
 		return commentInfoDao.find( "select *  from comment_info t where 1=1 "+sql.toString()+" order by id desc",paramer.toArray());
@@ -47,6 +47,14 @@ public class CommentInfoServiceImpl implements CommentInfoService {
 			if(!StringUtils.isEmpty(commentInfo.getScore())){
 				sql.append("and t."+commentInfo.getScoreColumnName()+" = ?");
 				paramer.add(commentInfo.getScore());
+			}
+			if(!StringUtils.isEmpty(commentInfo.getPrdProductName())){
+				sql.append("and t."+commentInfo.getPrdProductNameColumnName()+" like ?");
+				paramer.add("%"+commentInfo.getPrdProductName()+"%");
+			}
+			if(!StringUtils.isEmpty(commentInfo.getUserName())){
+				sql.append("and t."+commentInfo.getUserNameColumnName()+" like ?");
+				paramer.add("%"+commentInfo.getUserName()+"%");
 			}
 		}
 		return commentInfoDao.paginate(pageNumber, pageSize, "select * ", 
@@ -81,6 +89,14 @@ public class CommentInfoServiceImpl implements CommentInfoService {
 			return;
 		}
 		commentInfo.delete();
+	}
+
+	@Override
+	public List<CommentInfo> findGoodScoredAndOrderByCreateTime() {
+		List<Object> paramer = new ArrayList<Object>();
+		StringBuffer sql = new StringBuffer();
+		sql.append("and t.score = '1'");
+		return commentInfoDao.find( "select *  from comment_info t where 1=1 "+sql.toString()+" order by createTime desc",paramer.toArray());
 	}
 
 }

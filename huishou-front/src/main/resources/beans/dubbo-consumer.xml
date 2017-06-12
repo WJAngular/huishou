@@ -74,9 +74,13 @@
 		interface="com.isongshu.huishou.skeleton.service.CommentInfoService" 
 		url="${DIS_CONNECT}"/>	
 	
-	
-	
+	<dubbo:reference id="newsInfoService"
+		interface="com.isongshu.huishou.skeleton.service.NewsInfoService" 
+		url="${DIS_CONNECT}"/>	
 		
-			
+	<dubbo:reference id="cmsLinkService"
+		interface="com.isongshu.huishou.skeleton.service.CmsLinkService" 
+		url="${DIS_CONNECT}"/>	
+	
 		
 </beans>

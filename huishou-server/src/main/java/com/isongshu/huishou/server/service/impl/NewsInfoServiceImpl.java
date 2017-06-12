@@ -104,4 +104,13 @@ public class NewsInfoServiceImpl implements NewsInfoService {
 		newsInfo.delete();
 	}
 
+	@Override
+	public List<NewsInfo> findOrderBycreateTime() {
+		List<Object> paramer = new ArrayList<Object>();
+		StringBuffer sql = new StringBuffer();
+		sql.append("and t.status = 'Y'");
+		return newsInfoDao.find( "select *  from news_info t where 1=1 "+sql.toString()+" order by createTime desc",paramer.toArray());
+	}
+
+
 }

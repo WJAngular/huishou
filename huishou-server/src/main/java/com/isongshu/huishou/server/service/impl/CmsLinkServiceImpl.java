@@ -104,4 +104,13 @@ public class CmsLinkServiceImpl implements CmsLinkService {
 		cmsLink.delete();
 	}
 
+	@Override
+	public List<CmsLink> findOrderByCreateTime() {
+		List<Object> paramer = new ArrayList<Object>();
+		StringBuffer sql = new StringBuffer();
+		sql.append("and t.isValid = 'Y'");
+		return cmsLinkDao.find( "select *  from Cms_Link t where 1=1 "+sql.toString()+" order by createTime desc",paramer.toArray());
+	}
+
+
 }
