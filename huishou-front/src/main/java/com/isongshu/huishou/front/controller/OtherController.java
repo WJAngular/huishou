@@ -5,9 +5,12 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.isongshu.huishou.skeleton.model.NewsInfo;
 import com.isongshu.huishou.skeleton.model.OtherBigRecycle;
 import com.isongshu.huishou.skeleton.model.OtherJoin;
 import com.isongshu.huishou.skeleton.model.OtherNewProduct;
+import com.isongshu.huishou.skeleton.model.PrdProduct;
+import com.isongshu.huishou.skeleton.service.NewsInfoService;
 import com.isongshu.huishou.skeleton.service.OtherBigRecycleService;
 import com.isongshu.huishou.skeleton.service.OtherJoinService;
 import com.isongshu.huishou.skeleton.service.OtherNewProductService;
@@ -31,7 +34,8 @@ public class OtherController extends _Controller{
 	 @Inject.BY_NAME
 	 private OtherNewProductService otherNewProductService;
 	 
-	 
+	 @Inject.BY_NAME
+	 private NewsInfoService newsInfoService;
 	 
 	 public void addJoin(){
 		 JsonMessage jsonMessage = new JsonMessage();
@@ -78,11 +82,15 @@ public class OtherController extends _Controller{
 			}
 			renderJson(jsonMessage);
 	 }
-	 
-	 
-	 
-	 
-	 
+	 //内部新闻页面
+	 public void renderNews(){
+				//新闻ID
+				String id =  getPara("id");
+				//查询该新闻
+				NewsInfo newsInfo = newsInfoService.findById(id);
+				setAttr("object", newsInfo);
+				render("/WEB-INF/jsp/other/news/view.jsp");
+	 }
 	 
 	 
 	 
