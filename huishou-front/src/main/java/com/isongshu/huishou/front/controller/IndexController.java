@@ -45,14 +45,16 @@ public class IndexController extends _Controller {
 	public void index() {
 		List<PrdClazzBrand> clazzBrandProductList = prdClazzBrandService.queryAllClazzBrandHotProduct();
 		List<CmsLink> cmsLinks = cmsLinkService.findOrderByCreateTime();
-		List<NewsInfo> newInfos = newsInfoService.findOrderBycreateTime();
+		List<NewsInfo> outNews = newsInfoService.findOutNews();
+		List<NewsInfo> inNews = newsInfoService.findInNews();
 		List<CommentInfo> commentInfos = commentInfoService.findGoodScoredAndOrderByCreateTime();
 		setAttr("clazzBrandProduct",clazzBrandProductList);
 		setAttr("title","安特回收官网 | 手机回收｜二手手机回收｜笔记本回收｜专业二手数码回收平台");
 		setAttr("keywords", "安特回收-是中国最专业的手机及电子产品回收平台，专门提供手机、平板、笔记本、单反及单反镜头、等数码电子产品回收业务，专业检测、权威认证，提供上门高价回收-安特回收官网");
 		setAttr("description", "手机回收,平板回收,笔记本回收,单反回收,镜头回收,数码产品回收");
 		setAttr("cmsLinks",cmsLinks);
-		setAttr("newInfos",newInfos);
+		setAttr("inNews",inNews);
+		setAttr("outNews",outNews);
 		setAttr("commentInfos",commentInfos);
 		to(UrlKti.INDEX_JSP);
 	}

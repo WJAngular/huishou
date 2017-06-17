@@ -22,7 +22,6 @@ public class NewsInfoServiceImpl implements NewsInfoService {
 	public List<NewsInfo> find(NewsInfo newsInfo) {
 		List<Object> paramer = new ArrayList<Object>();
 		StringBuffer sql = new StringBuffer();
-		
 		if(newsInfo != null){
 			if(!StringUtils.isEmpty(newsInfo.getType())){
 				sql.append("and t."+newsInfo.getTypeColumnName()+" = ?");
@@ -105,11 +104,21 @@ public class NewsInfoServiceImpl implements NewsInfoService {
 	}
 
 	@Override
-	public List<NewsInfo> findOrderBycreateTime() {
+	public List<NewsInfo> findOutNews() {
 		List<Object> paramer = new ArrayList<Object>();
 		StringBuffer sql = new StringBuffer();
 		sql.append("and t.status = 'Y'");
-		return newsInfoDao.find( "select *  from news_info t where 1=1 "+sql.toString()+" order by createTime desc",paramer.toArray());
+		sql.append("and t.type = '2'");
+		return newsInfoDao.find( "select *  from news_info t where 1=1 "+sql.toString()+" order by id desc",paramer.toArray());
+	}
+
+	@Override
+	public List<NewsInfo> findInNews() {
+		List<Object> paramer = new ArrayList<Object>();
+		StringBuffer sql = new StringBuffer();
+		sql.append("and t.status = 'Y'");
+		sql.append("and t.type = '1'");
+		return newsInfoDao.find( "select *  from news_info t where 1=1 "+sql.toString()+" order by id desc",paramer.toArray());
 	}
 
 

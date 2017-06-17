@@ -84,12 +84,12 @@ public class OtherController extends _Controller{
 	 }
 	 //内部新闻页面
 	 public void renderNews(){
-				//新闻ID
-				String id =  getPara("id");
-				//查询该新闻
-				NewsInfo newsInfo = newsInfoService.findById(id);
-				setAttr("object", newsInfo);
-				render("/WEB-INF/jsp/other/news/view.jsp");
+			//新闻ID
+			String id =  getPara("id");
+			//查询该新闻
+			NewsInfo newsInfo = newsInfoService.findById(id);
+			setAttr("object", newsInfo);
+			render("/WEB-INF/jsp/other/news/view.jsp");	
 	 }
 	 
 	 
