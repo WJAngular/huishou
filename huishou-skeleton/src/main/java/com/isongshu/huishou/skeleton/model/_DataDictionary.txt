@@ -3,14 +3,14 @@ Table: Cms_Link
  Field      | Type          | Null | Key | Default | Remarks 
 ------------+---------------+------+-----+---------+---------
  id         | INT(10)       | NO   | PRI |         |         
- linkName   | VARCHAR(50)   | YES  |     |         |         
- linkType   | VARCHAR(50)   | YES  |     |         |         
- linkUrl    | VARCHAR(1000) | YES  |     |         |         
- iconUrl    | VARCHAR(1000) | YES  |     |         |         
- remark     | VARCHAR(1000) | YES  |     |         |         
- orderby    | INT(10)       | YES  |     |         |         
- createTime | DATETIME(19)  | YES  |     |         |         
- isvalid    | VARCHAR(2)    | YES  |     |         |         
+ linkName   | VARCHAR(50)   | YES  |     |         | 链接名称    
+ linkType   | VARCHAR(50)   | YES  |     |         | 链接类型    
+ linkUrl    | VARCHAR(1000) | YES  |     |         | 链接url   
+ iconUrl    | VARCHAR(1000) | YES  |     |         | 链接图片    
+ remark     | VARCHAR(1000) | YES  |     |         | 备注      
+ orderby    | INT(10)       | YES  |     |         | 排序      
+ createTime | DATETIME(19)  | YES  |     |         | 创建时间    
+ isvalid    | VARCHAR(2)    | YES  |     |         | 是否有效    
 ------------+---------------+------+-----+---------+---------
 
 Table: code
@@ -41,6 +41,8 @@ Table: comment_info
  prdProductName          | VARCHAR(300)  | YES  |     |         | 产品名称    
  recycleTradeAddressCity | VARCHAR(1000) | YES  |     |         | 回收城市    
  remark                  | VARCHAR(500)  | YES  |     |         | 备注      
+ tradePrice              | INT(10)       | YES  |     |         | 最终成交价格  
+ assessPrice             | INT(10)       | YES  |     |         | 评估价格    
 -------------------------+---------------+------+-----+---------+---------
 
 Table: news_info

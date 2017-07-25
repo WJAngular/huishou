@@ -9,12 +9,10 @@ import com.isongshu.huishou.skeleton.model.NewsInfo;
 import com.isongshu.huishou.skeleton.model.OtherBigRecycle;
 import com.isongshu.huishou.skeleton.model.OtherJoin;
 import com.isongshu.huishou.skeleton.model.OtherNewProduct;
-import com.isongshu.huishou.skeleton.model.PrdProduct;
 import com.isongshu.huishou.skeleton.service.NewsInfoService;
 import com.isongshu.huishou.skeleton.service.OtherBigRecycleService;
 import com.isongshu.huishou.skeleton.service.OtherJoinService;
 import com.isongshu.huishou.skeleton.service.OtherNewProductService;
-import com.isongshu.huishou.skeleton.service.PrdProductService;
 import com.isongshu.huishou.skeleton.util.JsonMessage;
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.spring.Inject;
@@ -89,9 +87,6 @@ public class OtherController extends _Controller{
 			//查询该新闻
 			NewsInfo newsInfo = newsInfoService.findById(id);
 			setAttr("object", newsInfo);
-			render("/WEB-INF/jsp/other/news/view.jsp");	
+			render("/other/news/view.jsp");	
 	 }
-	 
-	 
-	 
 }

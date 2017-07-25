@@ -30,6 +30,7 @@
 <script src="<%=request.getContextPath()%>/lib/ueditor/ueditor.config.js"></script>
 <script src="<%=request.getContextPath()%>/lib/ueditor/ueditor.all.min.js"></script>
 <script src="<%=request.getContextPath()%>/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="<%=request.getContextPath()%>/uploader/ajaxfileupload.js"></script>
 
 <script type="text/javascript">
 // $('.ui.selection.dropdown').dropdown();
@@ -298,7 +299,7 @@
 		;
 	}
 	
-	to_page('/newsInfo')
+	to_page('/prdProduct')
 	</script>
 
 

@@ -18,6 +18,7 @@ import com.isongshu.huishou.manager.controller.PrdProductController;
 import com.isongshu.huishou.manager.controller.SysAdminController;
 import com.isongshu.huishou.manager.controller.SysParamController;
 import com.isongshu.huishou.manager.controller.SystemController;
+import com.isongshu.huishou.manager.controller.UploadController;
 import com.isongshu.huishou.manager.controller.UserController;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -76,6 +77,7 @@ public class JfinalConfig extends JFinalConfig {
 		me.add("/newsInfo",NewsInfoController.class);
 		me.add("/linkInfo",CmsLinkController.class);
 		me.add("/commentInfo",CommentInfoController.class);
+		me.add("/upload",UploadController.class);
 		
 		me.add("/otherBigRecycle",OtherBigRecycleController.class);
 		me.add("/otherJoin",OtherJoinController.class);

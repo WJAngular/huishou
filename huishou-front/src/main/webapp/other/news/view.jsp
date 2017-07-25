@@ -12,8 +12,7 @@
 		<div class=" fourteen wide column">
 			
 			<div class="ui teal   segment"  style="padding: 100px">
-						
-					洒洒水
+				${object.content }
 			</div>
 			
 		</div>

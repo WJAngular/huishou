@@ -2,7 +2,6 @@
 	pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <script type="text/javascript">
 
 	//自适应框框
@@ -109,11 +108,9 @@
 		
 		//初始化图片
 		uploadImage();
-		
-	});
-	
-	
 
+		});
+		
 	
 	//保存
 	$("#saveBtn").on("click",function(){
@@ -358,11 +355,33 @@
 	
 	
 	function uploadImage(){
-		$("#imageObject").attr('src',$("#imageSrc").val());
+		$("#imgsrc").attr('src',$("#imgurl").val());
 		//自适应框框
 		$('#addOrUpdateLargeModal').modal('refresh');
 	}
-	
+	function ajaxFileUpload(fileEid, paramdata){
+	    if(typeof(paramdata)=='undefined') paramdata = {};
+	    var $file=$('#'+fileEid).val();
+	    if($file=='') {alert("请先选择对应的上传文件，谢谢"); return;}
+	    $.ajaxFileUpload({
+	        url:'upload/uploads',
+	        secureuri:false,
+	        fileElementId:fileEid,
+	        dataType: 'text',
+	        data:paramdata,
+	        success: function (result){
+	            var result = result.substring(result.indexOf("{"),result.indexOf("}")+1);
+	            result = eval("("+result+")");
+
+	            if(result.t==1){
+	                $("#imgsrc").attr("src","<%=request.getContextPath() %>/uploader/uploads/"+result.msg);
+	                $("#imgurl").val(result.imgurl);
+	            }else{
+	                alert("上传失败");
+	            }
+	        }
+	    });
+	}
 </script>
 
 		<div class="header">
@@ -375,7 +394,7 @@
 		  </div>
 		  <div class=" content">
 		  	<div  class="ui raised segment teal clearing">
-			<form class=" ui form" id="editForm" >
+			<form class=" ui form" id="editForm" enctype="multipart/form-data">
 				<input value="${object.id }" type="hidden" name="object.id">
 					   
 					    <div class=" inline field ">
@@ -476,13 +495,12 @@
 				    	<div class="inline fields">
 				    		<label>产品图片</label>
 				    		<div class="field twelve wide">
-				    		 	<input placeholder="网络地址" type="text" name="object.imgUrl" value="${object.imgUrl}"  id="imageSrc">
-				    		 </div>
-				    		 <div class="ui button" onclick="uploadImage()">上传</div>
+				    		 	<input type="file" name="upPic" id="upPic" onchange="ajaxFileUpload('upPic')">
+				    		 	<input type="hidden" id="imgurl" name="object.imgUrl" value="${object.imgUrl}"/>
+				    		</div>
 				    	</div>
-			 			<div class="inline fields">
-			 				<label>确认图片</label>
-				    		<img alt="" src="" id="imageObject" class="ui image small ">
+			 			<div class="inline fields" id="preview">
+				    		<img  id="imgsrc" class="ui image small " >
 				    	</div>
 			 			
 			 			<div class="inline field">

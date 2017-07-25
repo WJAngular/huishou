@@ -1,20 +1,12 @@
 package com.isongshu.huishou.manager.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.isongshu.huishou.manager.interceptor.IsLoginInterceptor;
-import com.isongshu.huishou.skeleton.model.PrdClazzBrand;
-import com.isongshu.huishou.skeleton.model.PrdPackage;
 import com.isongshu.huishou.skeleton.model.PrdProduct;
-import com.isongshu.huishou.skeleton.model.sql.SqlCondition;
-import com.isongshu.huishou.skeleton.model.sql.SqlObject;
-import com.isongshu.huishou.skeleton.model.sql.SqlOperEnum;
-import com.isongshu.huishou.skeleton.service.DbBaseService;
 import com.isongshu.huishou.skeleton.service.PrdClazzBrandService;
 import com.isongshu.huishou.skeleton.service.PrdPackageService;
 import com.isongshu.huishou.skeleton.service.PrdProductService;
@@ -23,6 +15,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.spring.Inject;
 import com.jfinal.plugin.spring.IocInterceptor;
+import com.jfinal.upload.UploadFile;
 
 @Before({ IocInterceptor.class,IsLoginInterceptor.class })
 public class PrdProductController extends _Controller{

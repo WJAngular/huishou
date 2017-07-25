@@ -56,6 +56,8 @@
 					  <input type="hidden" name="object.prdProductId" value="${orderInfo.prdProductId }" />
 					  <input type="hidden" name="object.prdProductName" value="${orderInfo.prdProductName }" />
 					  <input type="hidden" name="object.recycleTradeAddressCity" value="${orderInfo.recycleTradeAddressCity }" />
+					  <input type="hidden" name="object.tradePrice" value="${orderInfo.tradePrice }" />
+					  <input type="hidden" name="object.assessPrice" value="${orderInfo.assessPrice }" />
 					</form>
 				</div>
 

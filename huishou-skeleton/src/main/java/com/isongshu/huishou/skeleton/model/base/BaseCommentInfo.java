@@ -165,4 +165,28 @@ public abstract class BaseCommentInfo<M extends BaseCommentInfo<M>> extends Mode
 		return "remark";
 	}
 
+	public void setTradePrice(java.lang.Integer tradePrice) {
+		set("tradePrice", tradePrice);
+	}
+
+	public java.lang.Integer getTradePrice() {
+		return get("tradePrice");
+	}
+
+	public String getTradePriceColumnName() {
+		return "tradePrice";
+	}
+
+	public void setAssessPrice(java.lang.Integer assessPrice) {
+		set("assessPrice", assessPrice);
+	}
+
+	public java.lang.Integer getAssessPrice() {
+		return get("assessPrice");
+	}
+
+	public String getAssessPriceColumnName() {
+		return "assessPrice";
+	}
+
 }

@@ -23,6 +23,10 @@
 /* 	a{text-decoration:none;color:#000;} */
 
 /* 内容 */
+
+
+
+
 #content {
 	padding: 10px 0;
 	background: #fff;
@@ -494,48 +498,37 @@
 	<div class="ui two column doubling stackable grid container">
 		<div class="column">
 			<div class="ui items">
+				<c:forEach items="${ outNews}" var="news" varStatus="s" begin="0" end="2">
 				<div class="item">
 					<div class="ui small image">
-						<img src="image/news/new11.jpg">
+						<a href="${news.newsUrl }"><img  src="${news.iconUrl }"></img></a>
 					</div>
 					<div class="content">
-						<div class="header">回收大市场</div>
-						<div class="meta">
-							<span class="price">回收大市场</span> <span class="stay">回收大市场</span>
-						</div>
+					  <div class="header"><a class="header" href="${news.newsUrl }" target="_blank">${news.title }</a></div>
 						<div class="description">
-							<p>回收大市场回收大市场</p>
+							${news.summary }
 						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui small image">
-						<img src="image/news/new11.jpg">
-					</div>
-					<div class="content">
-						<div class="header">回收大市场</div>
-						<div class="meta">
-							<span class="price">回收大市场</span> <span class="stay">回收大市场</span>
-						</div>
-						<div class="description">
-							<p>回收大市场回收大市场</p>
-						</div>
-					</div>
-				</div>
+					  </div>
+				   </div>
+				   </c:forEach>
+				  
 			</div>
+<!-- 		<span style="float: right;padding-right: 50px"><a href="#">查看更多>></a></span> -->
 		</div>
 		<div class="column">
 			<div class="ui five wide relaxed divided list">
-				<c:forEach items="${newInfos }" var="news" varStatus="s" begin="0" end="3">
+				<c:forEach items="${inNews }" var="news" varStatus="s" begin="0" end="4">
 					<div class="item">
 						<i class="large github middle " ></i>
 						<div class="content">
-							<a class="header black" href="${news.newsUrl }" target="_blank">${news.title }</a>
+							<a class="header black" href="<%=request.getContextPath()%>/other/renderNews?id=${news.id }" target="_blank">${news.title }</a>
 							<div class="description">${news.summary }</div>
 						</div>
 					</div>
 				</c:forEach>
+				
 			</div>
+			<!-- <span style="float: right;padding-right: 50px;"><a href="#">查看更多</a></span> -->
 		</div>
 	</div>
 </div>
@@ -644,10 +637,10 @@
 
 <!-- 友情链接  -->
 <div class="ui segment container">
-	<div class="ui horizontal inverted small divided link list">
+	<div class="ui horizontal inverted small divided">
 		<h3>友情链接</h3>
 		<c:forEach items="${cmsLinks }" var="link" varStatus="l" begin="0" end="10">
-			<a class="item" href="${link.linkUrl }" target="_blank">${link.linkName }</a>
+			<a class="item"  href="${link.linkUrl }" target="_blank">${link.linkName }</a>
 		</c:forEach>
 	</div>
 </div>
