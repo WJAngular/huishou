@@ -82,19 +82,19 @@
 										 </div></th>
 								<th width="6%">序号</th>		        
 								<th width="10%">用户</th>
-								<th width="10%">产品名称</th>
+								<th width="8%">产品名称</th>
 								<th width="6%">满意度</th>
 								<th width="8%">城市</th>
 								<th width="10%">地址</th>
 								<th width="20%">评价心得</th>
 								<th width="13%">创建时间</th>
-								<th width="6%">操作 </th>
+								<th width="12%">操作 </th>
 							</tr>
 						</thead>
 						<tbody>
 							
 							<c:forEach items="${objectPage.getList() }" var="object">
-									<tr  id="tr${object.id}" ><!-- ondblclick="openUpdateLargeModal('${object.id}')" -->
+									<tr  id="tr${object.id}" ondblclick="openUpdateLargeModal('${object.id}')">
 										 <td class="collapsing">
 									        <div class="ui fitted slider checkbox single" data-method="${object.id}">
 										          <input type="checkbox" data-method="${object.id}"> <label></label>
@@ -110,9 +110,9 @@
 										<td><fmt:formatDate value="${ object.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 										<td >
 											<div class="ui mini icon buttons">
-<%-- 											  <button class="ui blue basic button " onclick="openUpdateLargeModal('${object.id}')"> --%>
-<!-- 											  	<i class="configure icon"></i>编辑 -->
-<!-- 											  </button> -->
+											  <button class="ui blue basic button " onclick="openUpdateLargeModal('${object.id}')">
+											  	<i class="configure icon"></i>编辑
+											  </button>
 											  <button class="ui red basic button " onclick="deleteById('${object.id}')">
 											  	<i class="remove user icon"></i>删除
 											  </button>

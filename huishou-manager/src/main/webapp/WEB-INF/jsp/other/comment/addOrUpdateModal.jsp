@@ -43,35 +43,7 @@
 	//表单验证器
 	$('#editForm')
 		  .form({
-		    fields: {
-		    linkName: {
-		        identifier: 'object.linkName',
-		        rules: [
-		          {
-		            type   : 'empty',
-		            prompt : '链接名称不能为空'
-		          }
-		        ]
-		      },
-		      linkType: {
-		        identifier: 'object.linkType',
-		        rules: [
-		          {
-		            type   : 'empty',
-		            prompt : '请选择类别'
-		          }
-		        ]
-		      },
-		      linkUrl: {
-			        identifier: 'object.linkUrl',
-			        rules: [
-			          {
-			            type   : 'empty',
-			            prompt : '链接地址不能为空'
-			          }
-			        ]
-			      }     
-			      
+		    fields: {   
 		    }
 		  })
 		;
@@ -98,51 +70,49 @@
 				<input value="${object.id }" type="hidden" name="object.id">
 					   
 					    <div class=" inline field ">
-					      <label>类别</label>
-					      <select class="ui dropdown" name="object.linkType" id="linkType">
-							  <option value="" ${object.linkType == '' ? 'selected':'' }>请选择</option>
-							  <option value="1" ${object.linkType == '1' ? 'selected':'' }>门户网站</option>
-							  <option value="2" ${object.linkType == '2' ? 'selected':'' }>论坛博客</option>
-					 		</select>
+					      	<label>用户</label>
+					      	<input placeholder="用户" type="text" name="object.userName" value="${object.userName }" />
 					    </div>
 					    
 					    <div class="inline field ">
-					      <label>链接名称</label>
-					      <input class="field twelve wide" placeholder="链接名称" type="text" name="object.linkName" value="${object.linkName }"  >
+					      <label>产品名称</label>
+					      <input type="text" placeholder="产品名称" name="object.prdProductName" value="${object.prdProductName }" />
 					    </div>
 					    
 					    <div class="inline field ">
-					      <label>链接地址</label>
-					      <input class="field twelve wide" placeholder="链接地址" type="text" name="object.linkUrl" value="${object.linkUrl}"  >
+					      <label>城市</label>
+					      <input class="field twelve wide" placeholder="城市" type="text" name="object.recycleTradeAddressCity" value="${object.recycleTradeAddressCity }" />
 					    </div>
 					    
-				    	<div class="inline fields">
-				    		<label>链接图片</label>
-				    		<div class="field twelve wide">
-				    		 	<input placeholder="图片地址" type="text" name="object.iconUrl" value="${object.iconUrl}"  id="imageSrc">
-				    		 </div>
-				    		 <div class="ui button" onclick="uploadImage()">上传</div>
-				    	</div>
-			 			<div class="inline fields">
-			 				<label>确认图片</label>
-				    		<img alt="" src="" id="imageObject" class="ui image small ">
-				    	</div>
-			 			
-			 			<div class="inline field">
-			 				<div class="ui toggle checkbox">
-							  <input id="isHot" type="checkbox" name="object.isvalid"   value="Y" ${object.isvalid == 'Y' ? 'checked' :'' }>
-							  <label>是否有效</label>
-							</div>
-				    	</div>
-				    	
-				    	<div class="inline field ">
-					      <label>排序</label>
-					      <input placeholder="排序" type="text" name="object.orderby" value="${object.orderby}"  >
+					    <div class="inline field ">
+					      <label>地址</label>
+					      <input class="field twelve wide" placeholder="地址" type="text" name="object.recycleTradeAddress" value="${object.recycleTradeAddress}"  >
 					    </div>
 					    
+					    <div class="inline fields">
+						      <label>回收满意度</label>
+						      <div class="field">
+							      <div class="ui radio checkbox">
+							        <input type="radio" name="object.score" value="1" ${object.score=="1" or object.score == null?'checked':'' }>
+							        <label>好评</label>
+							      </div>
+						    </div>
+						    <div class="field">
+							      <div class="ui radio checkbox">
+							        <input type="radio" name="object.score" value="2" ${object.score=="2"?'checked':'' }>
+							        <label>中评</label>
+							      </div>
+						    </div>
+						    <div class="field">
+							      <div class="ui radio checkbox">
+							        <input type="radio" name="object.score" value="3" ${object.score=="3"?'checked':'' }>
+							        <label>差评</label>
+							      </div>
+						    </div>
+						  </div>
 			    	    <div class=" inline field ">
-					      <label>备注</label>
-					      <textarea name="object.remark">${object.remark }</textarea>
+					      <label>评价心得</label>
+					      <textarea name="object.content">${object.content }</textarea>
 					    </div>
 			 	<div class="ui error message"></div>
 			 	<div class="ui blue button right floated big" id="saveBtn">保存</div>
